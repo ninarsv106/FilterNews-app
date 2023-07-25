@@ -26,4 +26,6 @@ The web application's frontend is developed using Python's Plotly Dash library, 
 Conclusion\
 The FilterNews web application provides a user-friendly and efficient way to filter news articles based on what they feel like reading that day and to cluster related articles based on events. The project's potential applications range from personalized news recommendations to event detection and monitoring real-time news trends. With further enhancements and scalability, FilterNews could become a valuable tool for news consumers seeking a tailored and organized news browsing experience. 
 ![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/68d40356-4ace-4449-8c4d-7105b3753650)
+![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/1cf022d4-3d4d-444e-bd21-71c7983e8e35)
+![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/ac0b26e9-5bdf-4a5c-91be-6298db5413b5)
 
