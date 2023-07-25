@@ -28,4 +28,8 @@ The FilterNews web application provides a user-friendly and efficient way to fil
 ![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/68d40356-4ace-4449-8c4d-7105b3753650)
 ![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/1cf022d4-3d4d-444e-bd21-71c7983e8e35)
 ![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/ac0b26e9-5bdf-4a5c-91be-6298db5413b5)
+![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/1bc61443-e354-45d7-a829-7cc7382c5987)
+![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/af5c8e07-26e6-48bf-ae16-57d2ca0ab13a)
+![image](https://github.com/ninarsv106/FilterNews-app/assets/93368436/9683d766-d2b8-4af1-97a3-1d2e5aff2f6b)
+
 
