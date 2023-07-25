@@ -1,5 +1,5 @@
 # FilterNews-app
-Project Report: FilterNews - A News Filtering and Clustering Web Application
+ FilterNews - A News Filtering and Clustering Web Application
 Introduction
 The FilterNews project is a web application that leverages Natural Language Processing (NLP) tools to filter and cluster newspaper articles. The goal is to allow users to easily find and read news articles that match their emotions and interests, as well as to group related articles based on events.
 Overview
