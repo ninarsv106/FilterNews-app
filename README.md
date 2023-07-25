@@ -21,7 +21,7 @@ Threading and RateLimitError\
 I tried optimizing the emotion classification process using threading to handle multiple API requests simultaneously. However, this approach resulted in encountering RateLimitError for certain queries, as sending too many API requests at once triggered rate limiting. Thus, the threading approach was not used to ensure stable performance.\
 \
 Event-based News Clustering\
-Initially, named entity extraction in combination with Spacy's similarity feature were considered for clustering articles based on events. However, this approach didn't capture semantic similarity effectively, so OpenAI embeddings were used for titles and descriptions instead. The DBSCAN clustering algorithm, utilizing cosine similarity, was preferred over KMeans for its ability to determine the number and size of clusters automatically.\
+Initially, named entity extraction in combination with Spacy's similarity feature were considered for clustering articles based on events. However, this approach didn't capture semantic similarity effectively, so OpenAI embeddings were used for titles and descriptions instead. The DBSCAN clustering algorithm, utilizing cosine similarity, was preferred over KMeans for its ability to determine the number and size of clusters by itself.\
 Clustering Process\
 1). Embedding Generation: OpenAI embeddings are generated for the titles and descriptions of the articles to capture semantic similarity between texts.\
 2). DBSCAN Clustering: The DBSCAN algorithm clusters the articles based on their embeddings, with the epsilon parameter set to determine the maximum distance between sample vectors assigned to the same cluster. Tuning the epsilon parameter around 0.1 yielded the most accurate results.\
