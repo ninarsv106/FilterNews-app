@@ -1,7 +1,7 @@
 # FilterNews-app
  FilterNews - A News Filtering and Clustering Web Application\
 Introduction\
- The FilterNews project is a web application that leverages Natural Language Processing (NLP) tools to filter and cluster newspaper articles. The goal is to allow users to easily find and read news articles that match their emotions and interests, as well as to group related articles based on events.
+ The FilterNews project is a web application that leverages Natural Language Processing (NLP) tools to filter and cluster newspaper articles. The goal is to allow users to easily find and read news articles that match their emotions and interests, as well as to group related articles based on events.\
 Overview\
 The FilterNews web application offers two main features:\
 Emotion-based News Filtering: Users can enter a query topic and a time range for the articles' publication date. The application then filters the news articles based on the user's desired emotion category. The emotions considered are: joy, anger, sadness, fear, neutral, disgust, and surprise. The emotion classification is performed using the OpenAI GPT-3.5-turbo model.\
