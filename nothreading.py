@@ -20,9 +20,7 @@ from sklearn.cluster import DBSCAN
 app = dash.Dash(__name__)
 app.title = 'FilterNews'
 # OpenAI API credentials
-#api = OpenAIMultiClient(endpoint="chats", data_template={"model": "gpt-3.5-turbo"})
-openai.api_key = "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"
-openai.organization = "org-BhRo4Lrkq90rSVIXVc82DeqN"
+openai.api_key = "OPENAI_API_KEY"
 # Emotion options
 emotion_options = [
     {"label": "Joy", "value": "joy"},
@@ -159,17 +157,14 @@ def perform_sentiment_analysis(text):
         ],
         temperature=0.0,
         )
-        #print(response)
         # Extract the emotion probabilities from the OpenAI API response
         emotions = response.choices[0].message.content.strip()
-        #print(emotions)
         emotion_probabilities = re.findall(r"\b\d+(\.\d+)?\b", emotions)
 
         emotion_scores.append([float(probability) for probability in emotion_probabilities])
         
-    #print(emotion_scores)
+
     # Calculate the average score for each emotion label across all chunks
-    #print(json.dumps(emotion_scores, indent=2))
     if emotion_scores:
      average_scores = [sum(scores[i] for scores in emotion_scores) / len(emotion_scores) for i in range(len(emotion_scores[0]))]
 
@@ -178,7 +173,6 @@ def perform_sentiment_analysis(text):
 
     # Find the label with the highest average score
      max_label = emotion_labels[average_scores.index(max(average_scores))]
-     print("analysis done")
      return max_label,average_scores
     else:
         return None 
@@ -198,7 +192,6 @@ def scrape_article_content(url):
      else:
         return None
     except requests.exceptions.RequestException as e:
-        print(f"Connection Error: {e}")
         return None
 
 
@@ -215,11 +208,10 @@ def scrape_article_content(url):
 
 
 def search_news_and_analyze_(n_clicks, topic, start_date, end_date, emotion_category):
-      print(f"{n_clicks=} {topic=} {start_date=} {end_date=} {emotion_category=}")
       
       if n_clicks > 0 and topic and start_date and end_date and emotion_category:
         # Make API request to retrieve news articles
-        api_key = "7a1ee67d2e3f42588dce5d99f99bcfa4"
+        api_key = "NEWS_API_KEY"
         url = 'https://newsapi.org/v2/everything'
         params = {
         'q': topic,
@@ -228,9 +220,8 @@ def search_news_and_analyze_(n_clicks, topic, start_date, end_date, emotion_cate
         'to': end_date,'language': 'en'
          }
         response = requests.get(url,params=params)
-        print("a")
         data = response.json()
-        #print(data)
+
 
         # Process the response data
         articles = data.get("articles", [])
@@ -242,20 +233,16 @@ def search_news_and_analyze_(n_clicks, topic, start_date, end_date, emotion_cate
                     contents.append(result)    
             results = []
             for i in range(len(contents)):
-                print(contents[i])
-            for i in range(len(contents)):
                 if contents[i]==None:
-                     print("Scraping failed; skipping to next article")
                      continue
 
-                #print(content)
+              
 
                 if contents[i]:
                     # Perform sentiment analysis
                     sentiment_category = perform_sentiment_analysis(contents[i])
                     if sentiment_category[0].lower() == emotion_category.lower():
                         radar_chart = generate_radar_chart(sentiment_category[1])
-                        print("something found")
                         results.append(
                             html.Div(
                                 className="article-box",
@@ -292,7 +279,7 @@ def search_news_and_analyze_(n_clicks, topic, start_date, end_date, emotion_cate
 def search_news_and_cluster(n_clicks, topic, start_date, end_date):
    if n_clicks > 0 and topic and start_date and end_date :
         # Make API request to retrieve news articles
-        api_key = "7a1ee67d2e3f42588dce5d99f99bcfa4"
+        api_key = "NEWS_API_KEY"
         url = 'https://newsapi.org/v2/everything'
         params = {
         'q': topic,
@@ -320,7 +307,7 @@ def search_news_and_cluster(n_clicks, topic, start_date, end_date):
             docs = [
                 row["title"] + "\n\n" + row["description"]
                 for _,row in df.iterrows()]
-            embeddings = OpenAIEmbeddings(openai_api_key="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",chunk_size=1000).embed_documents(docs)
+            embeddings = OpenAIEmbeddings(openai_api_key="OPENAI_API_KEY",chunk_size=1000).embed_documents(docs)
             dbscan = DBSCAN(eps=0.1, min_samples=2,metric='cosine').fit(embeddings)
             df["cluster_label"] =dbscan.labels_ 
 
