@@ -1,11 +1,13 @@
 # FilterNews-app
  FilterNews - A News Filtering and Clustering Web Application\
 Introduction\
-\
  The FilterNews project is a web application that leverages Natural Language Processing (NLP) tools to filter and cluster newspaper articles. The goal is to allow users to easily find and read news articles that match their emotions and interests, as well as to group related articles based on events.\
+\
 Overview\
+\
 The FilterNews web application offers two main features:\
 Emotion-based News Filtering: Users can enter a query topic and a time range for the articles' publication date. The application then filters the news articles based on the user's desired emotion category. The emotions considered are: joy, anger, sadness, fear, neutral, disgust, and surprise. The emotion classification is performed using the OpenAI GPT-3.5-turbo model.\
+\
 Event-based News Clustering: Users can again input a query topic and a time range, but this time the application clusters the news articles based on distinct events. The clustering is done using the DBSCAN algorithm, with OpenAI embeddings for titles and descriptions.
 Emotion-based News Filtering\
 Initially, I experimented with HuggingFace's Distilroberta-base pretrained emotion classification model. However, due to its slow performance for a large number of articles, I decided to use the OpenAI API with the GPT-3.5-turbo model, a large language model (LLM) with good capabilities for sentiment analysis.\
@@ -16,6 +18,7 @@ Backend Pipeline\
 4). Display Results: Articles matching the selected emotion category are presented in separate boxes, along with a radar chart illustrating the score distribution across all emotion categories. The process takes approximately 3 minutes to complete.\
 Threading and RateLimitError\
 I tried optimizing the emotion classification process using threading to handle multiple API requests simultaneously. However, this approach resulted in encountering RateLimitError for certain queries, as sending too many API requests at once triggered rate limiting. Thus, the threading approach was not used to ensure stable performance.\
+\
 Event-based News Clustering\
 Initially, named entity extraction in combination with Spacy's similarity feature were considered for clustering articles based on events. However, this approach didn't capture semantic similarity effectively, so OpenAI embeddings were used for titles and descriptions instead. The DBSCAN clustering algorithm, utilizing cosine similarity, was preferred over KMeans for its ability to determine the number and size of clusters automatically.\
 Clustering Process\
