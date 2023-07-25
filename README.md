@@ -11,6 +11,7 @@ Emotion-based News Filtering: Users can enter a query topic and a time range for
 Event-based News Clustering: Users can again input a query topic and a time range, but this time the application clusters the news articles based on distinct events. The clustering is done using the DBSCAN algorithm, with OpenAI embeddings for titles and descriptions.
 Emotion-based News Filtering\
 Initially, I experimented with HuggingFace's Distilroberta-base pretrained emotion classification model. However, due to its slow performance for a large number of articles, I decided to use the OpenAI API with the GPT-3.5-turbo model, a large language model (LLM) with good capabilities for sentiment analysis.\
+\
 Backend Pipeline\
 1). Querying Articles: The News API is used to fetch articles' information based on the user's entered query topic and time range. The results are organized into a dataframe.\
 2). Web Scraping: BeautifulSoup is utilized to extract the text content of the articles using their URLs. Threading is implemented to scrape the contents concurrently for faster processing.\
